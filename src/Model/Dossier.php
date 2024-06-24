@@ -2,18 +2,21 @@
 
 namespace Metarisc\Model;
 
+/*
+ * Les dossiers sont un ensemble de documents administratifs et techniques. L'instruction du dossier suit une logique pré-définie selon le type.
+*/
+
 class Dossier extends ModelAbstract
 {
-    private ?string $id                            = null;
-    private ?string $type                          = null;
-    private ?string $description                   = null;
-    private ?string $date_de_creation              = null;
-    private ?\Metarisc\Model\Utilisateur $createur = null;
-    private ?string $application_utilisee_nom      = null;
-    private ?string $statut                        = null;
-    private ?string $objet                         = null;
-    private ?\Metarisc\Model\PEI $pei              = null;
-    private ?\Metarisc\Model\ERP $erp              = null;
+    private ?string $id                                = null;
+    private ?string $type                              = null;
+    private ?string $objet                             = null;
+    private ?string $date_de_creation                  = null;
+    private ?\Metarisc\Model\DossierCreateur $createur = null;
+    private ?string $application_utilisee_nom          = null;
+    private ?string $statut                            = null;
+    private ?\Metarisc\Model\PEI $pei                  = null;
+    private ?\Metarisc\Model\ERP $erp                  = null;
 
     public static function unserialize(array $data) : self
     {
@@ -25,8 +28,8 @@ class Dossier extends ModelAbstract
         /** @var string $data['type'] */
         $object->setType($data['type']);
 
-        /** @var string $data['description'] */
-        $object->setDescription($data['description']);
+        /** @var string $data['objet'] */
+        $object->setObjet($data['objet']);
 
         /** @var string $data['date_de_creation'] */
         $object->setDateDeCreation($data['date_de_creation']);
@@ -39,9 +42,6 @@ class Dossier extends ModelAbstract
 
         /** @var string $data['statut'] */
         $object->setStatut($data['statut']);
-
-        /** @var string $data['objet'] */
-        $object->setObjet($data['objet']);
 
         /** @var array<array-key, mixed> $data['pei'] */
         $object->setPei($data['pei']);
@@ -72,14 +72,14 @@ class Dossier extends ModelAbstract
         $this->type=$type;
     }
 
-    public function getDescription() : ?string
+    public function getObjet() : ?string
     {
-        return $this->description;
+        return $this->objet;
     }
 
-    public function setDescription(string $description = null) : void
+    public function setObjet(string $objet = null) : void
     {
-        $this->description=$description;
+        $this->objet=$objet;
     }
 
     public function getDateDeCreation() : ?string
@@ -92,14 +92,14 @@ class Dossier extends ModelAbstract
         $this->date_de_creation = $date_de_creation;
     }
 
-    public function getCreateur() : ?Utilisateur
+    public function getCreateur() : ?DossierCreateur
     {
         return $this->createur;
     }
 
     public function setCreateur(array $createur) : void
     {
-        $this->createur=Utilisateur::unserialize($createur);
+        $this->createur=DossierCreateur::unserialize($createur);
     }
 
     public function getApplicationUtiliseeNom() : ?string
@@ -120,16 +120,6 @@ class Dossier extends ModelAbstract
     public function setStatut(string $statut = null) : void
     {
         $this->statut=$statut;
-    }
-
-    public function getObjet() : ?string
-    {
-        return $this->objet;
-    }
-
-    public function setObjet(string $objet = null) : void
-    {
-        $this->objet=$objet;
     }
 
     public function getPei() : ?PEI

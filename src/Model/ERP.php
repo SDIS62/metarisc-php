@@ -12,9 +12,9 @@ class ERP extends ModelAbstract
     private ?string $date_de_realisation                                  = null;
     private ?string $date_de_derniere_mise_a_jour                         = null;
     private ?array $references_exterieures                                = null;
-    private ?\Metarisc\Model\AdressePostale $implantation                 = null;
-    private ?\Metarisc\Model\DescriptifTechniqueERP $descriptif_technique = null;
-    private ?\Metarisc\Model\Contact $coordonnees                         = null;
+    private ?\Metarisc\Model\ERPImplantation $implantation                = null;
+    private ?\Metarisc\Model\ERPDescriptifTechnique $descriptif_technique = null;
+    private ?\Metarisc\Model\ERPCoordonnees $coordonnees                  = null;
 
     public static function unserialize(array $data) : self
     {
@@ -84,33 +84,33 @@ class ERP extends ModelAbstract
         $this->references_exterieures=$references_exterieures;
     }
 
-    public function getImplantation() : ?AdressePostale
+    public function getImplantation() : ?ERPImplantation
     {
         return $this->implantation;
     }
 
     public function setImplantation(array $implantation) : void
     {
-        $this->implantation=AdressePostale::unserialize($implantation);
+        $this->implantation=ERPImplantation::unserialize($implantation);
     }
 
-    public function getDescriptifTechnique() : ?DescriptifTechniqueERP
+    public function getDescriptifTechnique() : ?ERPDescriptifTechnique
     {
         return $this->descriptif_technique;
     }
 
     public function setDescriptifTechnique(array $descriptif_technique) : void
     {
-        $this->descriptif_technique=DescriptifTechniqueERP::unserialize($descriptif_technique);
+        $this->descriptif_technique=ERPDescriptifTechnique::unserialize($descriptif_technique);
     }
 
-    public function getCoordonnees() : ?Contact
+    public function getCoordonnees() : ?ERPCoordonnees
     {
         return $this->coordonnees;
     }
 
     public function setCoordonnees(array $coordonnees) : void
     {
-        $this->coordonnees=Contact::unserialize($coordonnees);
+        $this->coordonnees=ERPCoordonnees::unserialize($coordonnees);
     }
 }

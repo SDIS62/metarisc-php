@@ -180,12 +180,11 @@ class PEIAPI extends MetariscAbstract
             'json' => [
                 'id'                       => $dossier?->getId(),
                 'type'                     => $dossier?->getType(),
-                'description'              => $dossier?->getDescription(),
+                'objet'                    => $dossier?->getObjet(),
                 'date_de_creation'         => $dossier?->getDateDeCreation(),
                 'createur'                 => $dossier?->getCreateur(),
                 'application_utilisee_nom' => $dossier?->getApplicationUtiliseeNom(),
                 'statut'                   => $dossier?->getStatut(),
-                'objet'                    => $dossier?->getObjet(),
                 'pei'                      => $dossier?->getPei(),
                 'erp'                      => $dossier?->getErp(),
             ],

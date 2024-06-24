@@ -2,13 +2,17 @@
 
 namespace Metarisc\Model;
 
+/*
+ * Représente un membre d'une organisation.
+*/
+
 class OrganisationMembre extends ModelAbstract
 {
-    private ?\Metarisc\Model\Organisation $organisation                 = null;
-    private ?string $utilisateur_id                                     = null;
-    private ?\Metarisc\Model\OrganisationMembreUtilisateur $utilisateur = null;
-    private ?string $date_integration                                   = null;
-    private ?string $role                                               = null;
+    private ?\Metarisc\Model\OrganisationMembreOrganisation $organisation = null;
+    private ?\Metarisc\Model\OrganisationMembreUtilisateur $utilisateur   = null;
+    private ?string $utilisateur_id                                       = null;
+    private ?string $date_integration                                     = null;
+    private ?string $role                                                 = null;
 
     public static function unserialize(array $data) : self
     {
@@ -17,11 +21,11 @@ class OrganisationMembre extends ModelAbstract
         /** @var array<array-key, mixed> $data['organisation'] */
         $object->setOrganisation($data['organisation']);
 
-        /** @var string $data['utilisateur_id'] */
-        $object->setUtilisateurId($data['utilisateur_id']);
-
         /** @var array<array-key, mixed> $data['utilisateur'] */
         $object->setUtilisateur($data['utilisateur']);
+
+        /** @var string $data['utilisateur_id'] */
+        $object->setUtilisateurId($data['utilisateur_id']);
 
         /** @var string $data['date_integration'] */
         $object->setDateIntegration($data['date_integration']);
@@ -32,24 +36,14 @@ class OrganisationMembre extends ModelAbstract
         return $object;
     }
 
-    public function getOrganisation() : ?Organisation
+    public function getOrganisation() : ?OrganisationMembreOrganisation
     {
         return $this->organisation;
     }
 
     public function setOrganisation(array $organisation) : void
     {
-        $this->organisation=Organisation::unserialize($organisation);
-    }
-
-    public function getUtilisateurId() : ?string
-    {
-        return $this->utilisateur_id;
-    }
-
-    public function setUtilisateurId(string $utilisateur_id = null) : void
-    {
-        $this->utilisateur_id=$utilisateur_id;
+        $this->organisation=OrganisationMembreOrganisation::unserialize($organisation);
     }
 
     public function getUtilisateur() : ?OrganisationMembreUtilisateur
@@ -60,6 +54,16 @@ class OrganisationMembre extends ModelAbstract
     public function setUtilisateur(array $utilisateur) : void
     {
         $this->utilisateur=OrganisationMembreUtilisateur::unserialize($utilisateur);
+    }
+
+    public function getUtilisateurId() : ?string
+    {
+        return $this->utilisateur_id;
+    }
+
+    public function setUtilisateurId(string $utilisateur_id = null) : void
+    {
+        $this->utilisateur_id=$utilisateur_id;
     }
 
     public function getDateIntegration() : ?string

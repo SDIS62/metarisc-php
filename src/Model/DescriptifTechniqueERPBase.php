@@ -2,6 +2,10 @@
 
 namespace Metarisc\Model;
 
+/*
+ * Descriptif technique de base pour l'ensemble des ERP.
+*/
+
 class DescriptifTechniqueERPBase extends ModelAbstract
 {
     private ?string $id                                 = null;
