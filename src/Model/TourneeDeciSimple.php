@@ -2,14 +2,18 @@
 
 namespace Metarisc\Model;
 
+/*
+ * Tournéee DECI déclenchée
+*/
+
 class TourneeDeciSimple extends TourneeDeciBase
 {
-    private ?float $pourcentage                        = null;
-    private ?bool $est_terminee                        = null;
-    private ?\DateTime $date_de_debut                  = null;
-    private ?\DateTime $date_de_fin                    = null;
-    private ?\Metarisc\Model\TourneeDeciModele $modele = null;
-    private ?string $modele_id                         = null;
+    private ?float $pourcentage                                   = null;
+    private ?bool $est_terminee                                   = null;
+    private ?\DateTime $date_de_debut                             = null;
+    private ?\DateTime $date_de_fin                               = null;
+    private ?\Metarisc\Model\TourneeDeciSimpleAllOfModele $modele = null;
+    private ?string $modele_id                                    = null;
 
     public function getPourcentage() : ?float
     {
@@ -51,12 +55,12 @@ class TourneeDeciSimple extends TourneeDeciBase
         $this->date_de_fin=$date_de_fin;
     }
 
-    public function getModele() : ?TourneeDeciModele
+    public function getModele() : ?TourneeDeciSimpleAllOfModele
     {
         return $this->modele;
     }
 
-    public function setModele(TourneeDeciModele $modele) : void
+    public function setModele(TourneeDeciSimpleAllOfModele $modele) : void
     {
         $this->modele=$modele;
     }

@@ -2,21 +2,25 @@
 
 namespace Metarisc\Model;
 
+/*
+ * Une tournée de reconnaissance opérationnelle portant sur la visibilité, l’accessibilité,  la signalisation et la manoeuvrabilité (ouverture et fermeture) des PEI.
+*/
+
 class TourneeDeci extends ModelAbstract
 {
-    private ?string $id                                = null;
-    private ?string $libelle                           = null;
-    private ?string $description                       = null;
-    private ?string $date_de_creation                  = null;
-    private ?string $type                              = null;
-    private ?float $pourcentage                        = null;
-    private ?bool $est_terminee                        = null;
-    private ?string $date_de_debut                     = null;
-    private ?string $date_de_fin                       = null;
-    private ?\Metarisc\Model\TourneeDeciModele $modele = null;
-    private ?string $modele_id                         = null;
-    private ?int $mois_debut                           = null;
-    private ?int $mois_fin                             = null;
+    private ?string $id                                           = null;
+    private ?string $libelle                                      = null;
+    private ?string $description                                  = null;
+    private ?string $date_de_creation                             = null;
+    private ?string $type                                         = null;
+    private ?float $pourcentage                                   = null;
+    private ?bool $est_terminee                                   = null;
+    private ?string $date_de_debut                                = null;
+    private ?string $date_de_fin                                  = null;
+    private ?\Metarisc\Model\TourneeDeciSimpleAllOfModele $modele = null;
+    private ?string $modele_id                                    = null;
+    private ?int $mois_debut                                      = null;
+    private ?int $mois_fin                                        = null;
 
     public static function unserialize(array $data) : self
     {
@@ -154,14 +158,14 @@ class TourneeDeci extends ModelAbstract
         $this->date_de_fin = $date_de_fin;
     }
 
-    public function getModele() : ?TourneeDeciModele
+    public function getModele() : ?TourneeDeciSimpleAllOfModele
     {
         return $this->modele;
     }
 
     public function setModele(array $modele) : void
     {
-        $this->modele=TourneeDeciModele::unserialize($modele);
+        $this->modele=TourneeDeciSimpleAllOfModele::unserialize($modele);
     }
 
     public function getModeleId() : ?string

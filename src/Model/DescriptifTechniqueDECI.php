@@ -2,6 +2,10 @@
 
 namespace Metarisc\Model;
 
+/*
+ * Descriptif technique associé à un PEI.
+*/
+
 class DescriptifTechniqueDECI extends ModelAbstract
 {
     private ?string $id                     = null;
@@ -23,6 +27,7 @@ class DescriptifTechniqueDECI extends ModelAbstract
     private ?float $pression_statique       = null;
     private ?float $debit_gueule_bee        = null;
     private ?float $volume                  = null;
+    private ?bool $est_citerne              = null;
 
     public static function unserialize(array $data) : self
     {
@@ -84,6 +89,9 @@ class DescriptifTechniqueDECI extends ModelAbstract
 
         /** @var float $data['volume'] */
         $object->setVolume($data['volume']);
+
+        /** @var bool $data['est_citerne'] */
+        $object->setEstCiterne($data['est_citerne']);
 
         return $object;
     }
@@ -276,5 +284,15 @@ class DescriptifTechniqueDECI extends ModelAbstract
     public function setVolume(float $volume = null) : void
     {
         $this->volume=$volume;
+    }
+
+    public function getEstCiterne() : ?bool
+    {
+        return $this->est_citerne;
+    }
+
+    public function setEstCiterne(bool $est_citerne = null) : void
+    {
+        $this->est_citerne=$est_citerne;
     }
 }

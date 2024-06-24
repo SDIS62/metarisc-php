@@ -2,6 +2,10 @@
 
 namespace Metarisc\Model;
 
+/*
+ * La prescription réglementaire est une mesure de prévention et de sauvegarde propre à assurer la sécurité des personnes. Elle est décrite à travers un texte libre motivé par un ou des supports réglementaires. Le règlement de sécurité comprend des prescriptions générales communes à tous les établissements et d'autres particulières à chaque type d'établissement. Il précise les cas dans lesquels les obligations qu'il définit s'imposent à la fois aux constructeurs, propriétaires, installateurs et exploitants ou à certains de ceux-ci seulement.
+*/
+
 class Prescription extends ModelAbstract
 {
     private ?string $id                        = null;

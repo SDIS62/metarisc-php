@@ -2,6 +2,10 @@
 
 namespace Metarisc\Model;
 
+/*
+ * Descriptif technique de base pour l'ensemble des PEI.
+*/
+
 class DescriptifTechniqueDECIBase extends ModelAbstract
 {
     private ?string $id                     = null;
