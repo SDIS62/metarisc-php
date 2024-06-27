@@ -131,8 +131,8 @@ class OrganisationsAPI extends MetariscAbstract
         $this->request('POST', $path, [
             'json' => [
                 'organisation'     => $organisation_membre?->getOrganisation(),
-                'utilisateur_id'   => $organisation_membre?->getUtilisateurId(),
                 'utilisateur'      => $organisation_membre?->getUtilisateur(),
+                'utilisateur_id'   => $organisation_membre?->getUtilisateurId(),
                 'date_integration' => $organisation_membre?->getDateIntegration(),
                 'role'             => $organisation_membre?->getRole(),
             ],

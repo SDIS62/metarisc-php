@@ -2,6 +2,10 @@
 
 namespace Metarisc\Model;
 
+/*
+ * Pose d'une anomalie DECI sur un PEI.
+*/
+
 class AnomaliePEI extends ModelAbstract
 {
     private ?\Metarisc\Model\AnomalieDECI $anomalie = null;

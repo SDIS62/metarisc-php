@@ -43,7 +43,7 @@ class AnomaliesAPI extends MetariscAbstract
     }
 
     /**
-     * Liste des anomalies.
+     * Retourne une liste des anomalies types dans la bibliothèque DECI.
      */
     public function paginateAnomalies() : Pagerfanta
     {

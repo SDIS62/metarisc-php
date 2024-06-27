@@ -2,13 +2,17 @@
 
 namespace Metarisc\Model;
 
+/*
+ * Un géoservice est un service web pour représenter des informations géographiques lié à une organisation. Les géoservices sont basés sur les standards OGC (https://www.ogc.org).
+*/
+
 class OrganisationGeoservice extends ModelAbstract
 {
-    private ?string $id                                 = null;
-    private ?\Metarisc\Model\Organisation $organisation = null;
-    private ?string $nom                                = null;
-    private ?string $type                               = null;
-    private ?string $url                                = null;
+    private ?string $id                                                       = null;
+    private ?\Metarisc\Model\OrganisationGeoserviceOrganisation $organisation = null;
+    private ?string $nom                                                      = null;
+    private ?string $type                                                     = null;
+    private ?string $url                                                      = null;
 
     public static function unserialize(array $data) : self
     {
@@ -42,14 +46,14 @@ class OrganisationGeoservice extends ModelAbstract
         $this->id=$id;
     }
 
-    public function getOrganisation() : ?Organisation
+    public function getOrganisation() : ?OrganisationGeoserviceOrganisation
     {
         return $this->organisation;
     }
 
     public function setOrganisation(array $organisation) : void
     {
-        $this->organisation=Organisation::unserialize($organisation);
+        $this->organisation=OrganisationGeoserviceOrganisation::unserialize($organisation);
     }
 
     public function getNom() : ?string

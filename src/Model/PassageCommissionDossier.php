@@ -4,11 +4,11 @@ namespace Metarisc\Model;
 
 class PassageCommissionDossier extends ModelAbstract
 {
-    private ?string $id                       = null;
-    private ?\Metarisc\Model\Dossier $dossier = null;
-    private ?string $dossier_id               = null;
-    private ?\Metarisc\Model\Avis $avis       = null;
-    private ?string $statut                   = null;
+    private ?string $id                                               = null;
+    private ?\Metarisc\Model\PassageCommissionDossierDossier $dossier = null;
+    private ?string $dossier_id                                       = null;
+    private ?\Metarisc\Model\Avis $avis                               = null;
+    private ?string $statut                                           = null;
 
     public static function unserialize(array $data) : self
     {
@@ -42,14 +42,14 @@ class PassageCommissionDossier extends ModelAbstract
         $this->id=$id;
     }
 
-    public function getDossier() : ?Dossier
+    public function getDossier() : ?PassageCommissionDossierDossier
     {
         return $this->dossier;
     }
 
     public function setDossier(array $dossier) : void
     {
-        $this->dossier=Dossier::unserialize($dossier);
+        $this->dossier=PassageCommissionDossierDossier::unserialize($dossier);
     }
 
     public function getDossierId() : ?string

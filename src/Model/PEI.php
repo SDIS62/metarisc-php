@@ -2,6 +2,10 @@
 
 namespace Metarisc\Model;
 
+/*
+ * Dispositif de lutte contre l'incendie.
+*/
+
 class PEI extends ModelAbstract
 {
     private ?string $id                                                    = null;
